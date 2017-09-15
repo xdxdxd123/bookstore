@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+  <mapper namespace="com.neusoft.bookstore.mapper.IOrderdetailMapper">
+  	<resultMap id="OrderdetailResultMap" type="Orderdetail">
+  		<result column="count" property="count"/>
+  		<result column="price" property="price"/>
+  	</resultMap>
+  	<resultMap id="OrderdetailAssociationResultMap" type="Orderdetail" extends="OrderdetailResultMap">
+  	<association property="order" column="orderid"    select="com.neusoft.bookstore.mapper.IOrdersMapper.select"></association>
+  	<association property="book" column="bookid"   select="com.neusoft.bookstore.mapper.IBookMapper.select"></association>
+  	</resultMap>
+  	<!-- 添加订单详细信息 -->
+  	<insert id="insert" parameterType="Orderdetail">
+  	insert into Orderdetail(orderid,bookid,count,price)
+  	value(#{orderid},#{bookid},#{count},#{price})
+  	</insert>
+  	<!-- 删除订单详细信息 -->
+  	<delete id="delete" parameterType="Orderdetail">
+  	delete from Orderdetail where orderid=#{orderid}
+  	</delete>
+  	<!-- 修改订单详细信息-->
+  	<update id="update" parameterType="Orderdetail">
+  		update Orderdetail set 
+  		orderid=#{orderid},bookid=#{bookid},count=#{count},price=#{price}
+  		where orderid=#{orderid}
+  	</update>
+  	<!--取得订单详细信息 -->
+  	<select id="select" parameterType="int" resultMap="OrderdetailResultMap">
+  		select * from Orderdetail where orderid=#{orderid}
+  	</select>
+  	<!-- 取得所有订单详细信息（无分页） -->
+  	<select id="selectListByAll" resultMap="OrderdetailResultMap">
+  	select * from Orderdetail
+  	</select>
+  	<!-- 取得所有订单详细信息（有分页） -->
+  	<select id="selectListByWithPage" resultMap="OrderdetailResultMap">
+  	select * from Orderdetail
+  	</select>
+  </mapper>

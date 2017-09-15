@@ -1,0 +1,46 @@
+package com.neusoft.bookstore.service.xml;
+
+import java.util.List;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
+
+import com.neusoft.bookstore.mapper.IShopUserMapper;
+import com.neusoft.bookstore.model.ShopUserModel;
+import com.neusoft.bookstore.service.IShopUserService;
+@Service("ShopUserService")
+@Transactional
+public class ShopUserServiceImpl implements IShopUserService {
+	private IShopUserMapper isu;
+	@Autowired
+	public void setIsu(IShopUserMapper isu) {
+		this.isu = isu;
+	}
+
+	public void add(ShopUserModel sum) throws Exception {
+		// TODO Auto-generated method stub
+      isu.insert(sum);
+	}
+
+	public void modify(ShopUserModel sum) throws Exception {
+		// TODO Auto-generated method stub
+isu.update(sum);
+	}
+
+	public void delete(ShopUserModel sum) throws Exception {
+		// TODO Auto-generated method stub
+isu.delete(sum);
+	}
+
+	public ShopUserModel get(int userid) throws Exception {
+		// TODO Auto-generated method stub
+		return isu.select(userid);
+	}
+
+	public List<ShopUserModel> getListByAll() throws Exception {
+		// TODO Auto-generated method stub
+		return isu.selectListByAll();
+	}
+
+}

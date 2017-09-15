@@ -1,0 +1,46 @@
+package com.neusoft.bookstore.service.xml;
+
+import java.util.List;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
+
+import com.neusoft.bookstore.mapper.IOrdersMapper;
+import com.neusoft.bookstore.model.OrdersModel;
+import com.neusoft.bookstore.service.IOrdersService;
+@Service("OrdersService")
+@Transactional
+public class OrdersServiceImpl implements IOrdersService {
+	private IOrdersMapper iod;
+	@Autowired
+	public void setIod(IOrdersMapper iod) {
+		this.iod = iod;
+	}
+
+	public void add(OrdersModel odm) throws Exception {
+		// TODO Auto-generated method stub
+iod.insert(odm);
+	}
+
+	public void modify(OrdersModel odm) throws Exception {
+		// TODO Auto-generated method stub
+iod.update(odm);
+	}
+
+	public void delete(OrdersModel odm) throws Exception {
+		// TODO Auto-generated method stub
+iod.delete(odm);
+	}
+
+	public OrdersModel get(int orderid) throws Exception {
+		// TODO Auto-generated method stub
+		return iod.select(orderid);
+	}
+
+	public List<OrdersModel> getListByAll() throws Exception {
+		// TODO Auto-generated method stub
+		return iod.selectListByAll();
+	}
+
+}

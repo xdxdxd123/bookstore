@@ -1,0 +1,28 @@
+// JavaScript Document
+$('document').ready(
+function(){
+	$("RegForm").validate(
+			{
+			rules:{
+				  username:{
+					  required:true,
+					  remote:"ShopUser/checkUserExist.mvc"
+				  },
+				  password:
+					  {
+					  required:true
+					  }
+				  ,
+				  surepwd:{
+					  required:true,
+					  equalTo:"#password"
+				  }
+				  ,
+				  email:{
+					  required:true,
+					  email:true
+				  }
+			}
+			}
+			);
+});

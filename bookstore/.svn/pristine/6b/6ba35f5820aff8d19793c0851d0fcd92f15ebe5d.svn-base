@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="viewport"
+    content="width=device-width, height=device-height, initial-scale=1, minimum-scale=1, maximum-scale=1, user-scalable=0, target-densityDpi=device-dpi">
+<title>注册</title>
+<link href="css/base.css" type="text/css" rel="stylesheet" />
+<link href="css/pages.css" type="text/css" rel="stylesheet" />
+<link href="css/register.css" type="text/css" rel="stylesheet" />
+
+<script type="text/javascript" charset="utf-8" src="http://static.bshare.cn/b/buttonLite.js#style=-1&uuid=&pophcol=2&lang=zh"></script>
+<script type="text/javascript" charset="utf-8" src="http://static.bshare.cn/b/bshareC0.js"></script>
+    <script>
+        var path = "../";
+    </script>
+</head>
+
+<body>
+
+<div id="wrap">
+  <!-- logo图标欢迎注册 -->
+  <div id="header">
+    <div class="screen pr">
+      <div class="clearfix">
+        <span class="name-login f20 pl20 mt16 f24">欢迎注册</span>
+      </div>
+    </div>
+  </div>
+  <!-- 内容 -->
+  <div id="content" class="screen mt24">
+    
+      <form id="mobileForm" isError='false' action="" class="register-form">
+          <div class="form-list1">
+              <ul class="register-ul f14">
+                  <li>
+                      <label for=""><em class="color-red mr10">*</em>用户名：</label><input name="username" id="mUsername" type="text" class="{required:true}" />
+                      <p class="checkTips none f_left ml20 color-red">! 用户名已经被使用</p>
+                  </li>
+                  <li>
+                      <label for=""><em class="color-red mr10">*</em>密码：</label><input name="userpwd" id="mUserpwd" type="password" class="{required:true,PassWord:true}" autocomplete="off" />
+                  </li>
+                  <li>
+                      <label for=""><em class="color-red mr10">*</em>确认密码：</label><input name="surepwd" id="mSurepwd" type="password" class="{required:true,surepwd:'#mUserpwd'}" autocomplete="off" />
+                  </li>
+                  <li>
+                      <label for="">电子邮箱：</label><input name="email" id="mEmail" type="text"/>
+                  </li>
+                  <li>
+                      <label for=""><em class="color-red mr10">*</em>手机号码：</label><input name="mobile" id="mMobile" type="tel" class="{required:true,tel:true}"/>
+                      <p class="checkTips none f_left ml20 color-red">! 手机号已经被使用</p>
+                  </li>
+                  <li>
+                      <label for=""><em class="color-red mr10">*</em>验证码：</label><input name="code" id="mCode" type="text" class="captcha {required:true}" />
+                      <span id="getMobileCode" class="obtain f13">获取短信验证码</span>
+                  </li>
+              </ul>
+          
+              <div class="terms-service">
+                  <p class="f_left" style="width:190px; height:14px; display:block;"></p>
+                  <button type="submit" class="button buttonClass f16 color_fff bdrs_2" id="mButton">立即注册</button>
+              </div>
+          </div>
+      </form>
+      <form id="emailForm" validate='true' isError='false' action="" class="register-form none">
+          <div class="form-list2">
+              <ul class="register-ul f14">
+                  <li>
+                      <label for=""><em class="color-red mr10">*</em>用户名：</label><input name="username" id="eUsername" type="text" class="{required:true}" />
+                      <p class="checkTips none f_left ml20 color-red">! 用户名已经被使用</p>
+                  </li>
+                  <li>
+                      <label for=""><em class="color-red mr10">*</em>密码：</label><input name="userpwd" id="eUserpwd" type="password" class="{required:true,PassWord:true}" autocomplete="off"/>
+                  </li>
+                  <li>
+                      <label for=""><em class="color-red mr10">*</em>确认密码：</label><input name="surepwd" id="eSurepwd" type="password" class="{required:true,surepwd:'#eUserpwd'}" autocomplete="off"/>
+                  </li>
+                  <li>
+                      <label for="">手机号码：</label><input name="mobile" id="mMobile" type="tel" class="{tel:true}"/>
+                      <p class="checkTips none f_left ml20 color-red">! 手机号已经被使用</p>
+                  </li>
+                  <li>
+                      <label for=""><em class="color-red mr10">*</em>电子邮箱：</label><input name="email" id="eEmail" type="text" class="{required:true,email:true}" />
+                      <p class="checkTips none f_left ml20 color-red">! 电子邮箱已经被使用</p>
+                  </li>
+              </ul>
+              
+              <div class="terms-service">
+                  <p class="f_left" style="width:190px; height:14px; display:block;"></p>
+                  <button type="submit" class="button buttonClass f16 color_fff bdrs_2" id="eButton">立即注册</button>
+              </div>
+          </div>
+      </form>
+  </div>
+</div>
+<div id="phone-pic-vild" class="pic-vild-wrap none">
+  <div class="pic-vild-overlay"></div>
+  <div class="pic-vild-content">
+    <p class="pic-vild-title">
+      请输入验证码
+      <span class="pic-vild-close">×</span>
+    </p>
+    <div class="pic-vild-from">
+        <div class="clearfix">
+            <input class="f_left pic-vild-ipt" />
+            <img class="f_left pic-vild-img" />
+        </div>
+        <p class="pic-vild-tip none">验证码错误，请重新输入</p>
+        <div class="pic-vild-btn">确定</div>
+    </div>
+  </div>
+</div>
+</body>
+<script type="text/javascript" src="js/jquery-1.12.0.min.js"></script>
+<script type="text/javascript" src="js/core/mmd.js"></script>
+<script type="text/javascript" src="js/core/util.js"></script>
+<script type="text/javascript" src="js/core/common.js"></script>
+<script type="text/javascript" src="js/plugins/validation/jquery.validate.min.js"></script>
+<script type="text/javascript" src="js/plugins/validation/jquery.metadata.js"></script>
+<script type="text/javascript" src="js/plugins/validation/message_zhCN.js"></script>
+<script type="text/javascript" src="js/plugins/validation/additional-methods.js"></script>
+<script type="text/javascript" src="js/register.js"></script>
+</html>

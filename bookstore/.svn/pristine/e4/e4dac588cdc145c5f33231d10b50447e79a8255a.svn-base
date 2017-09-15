@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+  <mapper namespace="com.neusoft.bookstore.mapper.IShopUserMapper">
+  	<resultMap type="ShopUser"    id="shopUserMap">
+  		<id column="userid" property="userid"/>
+  		<result column="username" property="username"/>
+  		<result column="password" property="password"/>
+  		<result column="realname" property="realname"/>
+  		<result column="tel" property="tel"/>
+  		<result column="address" property="address"/>
+  		<result column="email" property="email"/>
+  	</resultMap>
+  	<!-- 添加用户 -->
+  	<insert id="insert" parameterType="ShopUser">
+  	insert into shopuser(userid,username,wd,realname,tel,address,email)
+  	value(#{userid},#{username},#{password},#{realname},#{tel},#{address},#{email})
+  	</insert>
+  	<!-- 删除用户 -->
+  	<delete id="delete" parameterType="ShopUser">
+  	delete from shopuser where userid=#{userid}
+  	</delete>
+  	<!-- 修改用户 -->
+  	<update id="update" parameterType="ShopUser">
+  		update shopuser set 
+  		username=#{username},wd=#{password},realname=#{realname},tel=#{tel},address=#{address},email=#{email}
+  		where userid=#{userid}
+  	</update>
+  	<!--取得用户对象 -->
+  	<select id="select" parameterType="int" resultMap="shopUserMap">
+  		select * from shopuser where userid=#{userid}
+  	</select>
+  	<!-- 取得所有用户列表（无分页） -->
+  	<select id="selectListByAll" resultMap="shopUserMap">
+  	select * from shopuser
+  	</select>
+  	<!-- 取得所有用户列表（有分页） -->
+  	<select id="selectListByWithPage" resultMap="shopUserMap">
+  	select * from shopuser
+  	</select>
+  	<!-- 取得指定功能的用户列表 -->
+  	<select id="selectListByFunction" parameterType="int" resultMap="shopUserMap">
+	   <!-- 此处需系统功能表 -->
+	</select>
+  </mapper>

@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.neusoft.bookstore.mapper.IOrdersMapper">
+	<resultMap id="OrdersResultMapper" type="Orders">
+		<id column="orderid" property="orderid" />
+		<result column="time" property="time" />
+		<result column="delivery" property="delivery"/>
+		<result column="payment" property="payment"/>
+		<result column="status" property="status"/>
+	</resultMap>
+	<resultMap id="OrdersAssociationResultMap" type="Orders" extends="OrdersResultMapper">
+	<association property="shopuser" column="userid" select="com.neusoft.bookstore.mapper.IShopUserMapper.select"></association>
+	</resultMap>
+	<resultMap id="OrdersCollectionResultMap" type="Orders" extends="OrdersResultMapper">
+	<collection property="orderdetails" column="orderid" select="com.neusoft.bookstore.mapper.IOrderdetailMapper.select"></collection>
+	</resultMap> 
+	<insert id="insert" parameterType="Orders">
+	<selectKey keyProperty="orderid" resultType="int" order="BEFORE">
+  	 select SQ_orders.nextval from dual
+  	</selectKey>
+		insert into Orders values (#{orderid},#{shopuser.userid},#{time},#{delivery},#{payment},#{status})
+	</insert>
+	<!-- 删除客户订单 -->
+	<delete id="delete" parameterType="Orders">
+		delete from Orders where orderid=#{orderid}
+	</delete>
+	<!-- 修改客户订单 -->
+	<update id="update" parameterType="Orders">
+		update Orders set orderid=#{orderid},catnam#{catname}
+	</update>
+	<!--取得客户订单 -->
+	<select id="select" parameterType="int" resultMap="OrdersResultMapper">
+		select * from Orders where orderid=#{orderid} order by orderid
+	</select>
+	<!-- 通过客户ID取得所有客户订单 -->
+	<select id="selectOrderListByUserId" resultMap="OrdersAssociationResultMap">
+	    select * from Orders where userid=#{userid} order by orderid
+	</select>
+	<!-- 取得所有图书分类列表（无分页） -->
+	<select id="selectListByAll" resultMap="OrdersResultMapper">
+		select * from Orders order by orderid
+	</select>
+	<!-- 取得所有图书分类列表（有分页） -->
+	<select id="selectListByWithPage" resultMap="OrdersResultMapper">
+		select * from Orders order by orderid
+	</select>
+	<!-- 取得订单总数 -->
+	<select id="selectCountAll" resultType="int">
+	 select count(orderid) from Orders
+	</select>
+</mapper>

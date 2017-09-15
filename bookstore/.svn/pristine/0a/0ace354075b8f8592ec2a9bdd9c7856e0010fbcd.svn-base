@@ -1,0 +1,71 @@
+
+<!DOCTYPE html>
+<!-- saved from url=(0037)http://www.gzebook.cn/user/login.html -->
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+<meta name="viewport" content="width=device-width, height=device-height, initial-scale=1, minimum-scale=1, maximum-scale=1, user-scalable=0, target-densityDpi=device-dpi">
+<title>登录</title>
+<link href="css/base.css" type="text/css" rel="stylesheet">
+<link href="css/pages.css" type="text/css" rel="stylesheet">
+<link href="css/index.css" type="text/css" rel="stylesheet">
+<link href="css/landing.css" type="text/css" rel="stylesheet">
+<script type="text/javascript" src="js/jquery-1.12.0.min.js"></script>
+    <script>
+        var path = "../";
+    </script>
+<script charset="UTF-8" src="./登录_files/query"></script><meta http-equiv="X-Frame-Options" content="SAMEORIGIN "><script charset="UTF-8" src="js/bundle.js"></script><script charset="UTF-8" src="js/loginButton.js"></script><link href="css/loginButton.css" type="text/css" rel="stylesheet"></head>
+
+<body><iframe id="sina_anywhere_iframe" style="display: none;" src="saved_resource.html"></iframe>
+<!-- logo图标欢迎登录 -->
+<div id="header">
+    <div class="header-landing">
+      <div class="header-wrap clearfix">
+         <h1 class="f_left mt10 pr20"><a href="index.html"><img src="images/logo.png"></a></h1>
+         <span class="name-login f20 pl20 mt16 f24">欢迎登录</span>
+      </div>
+    </div>
+</div>
+<!-- 内容 -->
+<div class="content header-landing pr">
+     <img src="images/login-banner.jpg" alt="">
+     <!-- 表单 -->
+     <form action="login.html" class="form-landing pa">
+         <div class="f_right landing-info f14">
+            <ul class="landing-ul color_333">
+               <li data-type="0" class="contentli">本站用户</li>
+               <li data-type="4">书城用户</li>
+               <li data-type="5">在线教育用户</li>
+            </ul>
+            <input id="username" type="text" class="landing-input mb14 f13" placeholder="账户名">
+            <input id="password" type="password" class="landing-input mb16 f13" placeholder="密码" autocomplete="off">
+            <p id="errorTip" class="color-red f12 none">*用户名或者密码不正确，请重新输入</p>
+            <div class="proposal mb28 clearfix">
+               <span class="f_left checkbox none">
+                  <input type="checkbox" class="checkbox-info f14" id="male"><label for="male" class="f13  color_333">下次自动登录</label>
+               </span>
+               <a href="http://www.gzebook.cn/user/foret.html" class="f_right f13 color_a">忘记密码</a>
+            </div>
+            <a id="loginBtn" href="javascript:void(0);" class="button block tc color_fff f14">登录</a>
+            <p class="footer-line mb22"></p>
+            <p class="follows f12 color_333">可以用以下方式登录</p>
+            <div class="choose-landing">
+                <a id="login-sina" href="javascript:void(0);"><div class="WB_loginButton WB_widgets">
+                	<a href="javascript:void(0);"><img src="images/loginButton_24.png"></a></div></a>
+                <a id="login-qq" href="javascript:void(0);">
+                	<a href="javascript:;" onclick="return window.open(&#39;https://graph.qq.com/oauth2.0/authorize?client_id=101361768&amp;response_type=token&amp;scope=all&amp;redirect_uri=http%3A%2F%2Fwww.gzebook.cn%2Fuser%2FqqLogin.html&#39;, &#39;oauth2Login_10857&#39; ,&#39;height=525,width=585, toolbar=no, menubar=no, scrollbars=no, status=no, location=yes, resizable=yes&#39;);"><img src="images/Connect_logo_7.png" alt="QQ登录" border="0"></a></a>
+                <a class="none" href="javascript:void(0);">
+                	<img src="images/login_renren.png" height="24" width="24" alt=""></a>
+                <a href="register.html" class="f_right f13 color_a">立即注册</a>
+            </div>
+         </div>
+     </form>
+</div>
+
+<script src="wb.js" type="text/javascript" charset="utf-8"></script>
+<script src="js/jquery-1.12.0.min.js"></script>
+<script src="js/login.js"></script>
+<script src="js/encrypt.js"></script>
+<script src="js/util.js"></script>
+<script src="js/common.js"></script>
+<script src="js/loader.js"></script>
+<script src="js/mmd.js"></script>

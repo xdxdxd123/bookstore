@@ -1,0 +1,101 @@
+// JavaScript Document
+(function($){
+	var util = window.util,common = window.common;
+	var inner = {
+		/*
+		 * 鍒囨崲娉ㄥ唽绫诲瀷
+		 */
+		switchType : function(){
+			var index=$(this).index();
+			$(".toggle-info").click(function(event) {
+			   $(this).eq(index).addClass('conterttoggle').siblings().removeClass('conterttoggle');
+			});
+			// $(".register-ul label").prepend('<em class="notes">*</em>');
+			$(".toggle-left").click(function(event) {
+				$("#mobileForm").css('display', 'block');
+				$("#emailForm").css('display', 'none');
+			});
+			$(".toggle-right").click(function(event) {
+				$("#mobileForm").css('display', 'none');
+				$("#emailForm").css('display', 'block');
+			});
+		},
+		/*
+		 * 鏍￠獙閭璺熸墜鏈哄彿鐮佹槸鍚﹀凡缁忚娉ㄥ唽
+		 */
+		checkExist : function(){
+			$('input[name="username"],input[name=email],input[name=mobile]').blur(function(){
+				var name = $(this).attr('name'),value = $(this).val();
+				var _this = $(this);
+				if($.trim(value) == '')
+				  return;
+				common.ajax.post('/user/check',{type:name,value:value},function(data){
+					if(data.code == "200"){
+						_this.siblings('.checkTips').hide();
+						_this.parents('form').attr('isError','false');
+					}else{
+						_this.siblings('.checkTips').show();
+						_this.parents('form').attr('isError','true');
+					}
+				},true,false);
+			});
+		},
+		/*
+		 * 鎻愪氦娉ㄥ唽
+		 */
+		submitEvent : function(){
+			var submitHandler = function(form){
+				if(!$(form).find('.checkbox-info').is(':checked')){
+					alert('璇蜂粩缁嗛槄璇汇�婂箍璐暟瀛椾功鍩庢湇鍔℃潯娆俱�嬶紝骞跺悓鎰忓悗杩涜娉ㄥ唽锛�');
+					return false;
+				}
+				if($(form).attr('isError') != 'true'){
+					var parms = $(form).serializeJson();
+					parms['userpwd'] = mmd(parms['userpwd']);
+					delete parms['surepwd'];
+					
+					if($(form).attr('id') == 'emailForm'){
+						common.ajax.post('/user/register_foreamil',parms,function(data){
+							console.log(data);
+							if(data.code == "200"){
+								$('input[name="userpwd"],input[name="surepwd"]').val(parms['userpwd']);
+								alert('娉ㄥ唽鎴愬姛锛岀幇鍦ㄨ烦杞埌鐧诲綍椤甸潰锛�');
+								location.href = 'login.html';
+								return;
+							}else{
+								alert(data.message);
+								return;
+							}
+						});
+					}else{
+						common.ajax.post('/user/reg',parms,function(data){
+							if(data.code == "200"){
+								$('input[name="userpwd"],input[name="surepwd"]').val(parms['userpwd']);
+								alert('娉ㄥ唽鎴愬姛锛岀幇鍦ㄨ烦杞埌鐧诲綍椤甸潰锛�');
+								location.href = 'login.html';
+								return;
+							}else{
+								alert(data.message);
+								return;
+							}
+						});
+					}
+				}
+			}
+			common.validation($('#mobileForm'),submitHandler);
+			common.validation($('#emailForm'),submitHandler);
+		},
+		/*
+		 * 鑾峰彇楠岃瘉鐮�
+		 */
+		 getTelCode : function(){
+			 common.getTelCode($('#getMobileCode'),1,$('#mMobile'));
+		 }
+	}
+	$(function(){
+		inner.switchType();
+		inner.checkExist();
+		inner.submitEvent();
+		inner.getTelCode();
+	})
+})(jQuery)

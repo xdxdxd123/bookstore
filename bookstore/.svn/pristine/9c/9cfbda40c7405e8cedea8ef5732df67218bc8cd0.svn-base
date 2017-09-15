@@ -1,0 +1,21 @@
+package com.neusoft.bookstore.service;
+
+import java.util.List;
+
+import com.neusoft.bookstore.model.ShopUserModel;
+
+//客户业务
+public interface IShopUserService {
+	//增加用户
+	public void add(ShopUserModel sum) throws Exception;
+	//修改用户
+	public void modify(ShopUserModel sum) throws Exception;
+	//删除用户
+	public void delete(ShopUserModel sum) throws Exception;
+	//通过ID查找用户
+	public ShopUserModel get(int userid) throws Exception;
+	//取得所有用户
+	public List<ShopUserModel> getListByAll()throws Exception;
+	//用户验证方法，用于登录页面
+	public boolean validate(int userid,String password) throws Exception;
+}

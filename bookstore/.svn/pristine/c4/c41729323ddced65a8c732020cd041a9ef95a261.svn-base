@@ -1,0 +1,69 @@
+.sortMenu{
+    width: 917px;
+	min-height:520px;
+    overflow: hidden;
+    margin-left: 242px;
+}
+.sortMenu-position{
+    height: 40px;
+    line-height: 40px;
+    font-size: 14px;
+}
+.sortMenu-position span:last-child{
+    color: #858585;
+}
+.sortChoice{
+    border: 1px solid #e2e2e2;
+    height: 29px;
+    background-color: #f2f2f2;
+    overflow: hidden;
+}
+.sortChoice ul li{
+    padding: 0 40px;
+    height: 27px;
+    line-height: 27px;
+    float: left;
+    cursor: pointer;
+    font-weight: bold;
+}
+
+.sortChoice ul li.clicked{
+    border-bottom: 2px solid #4D685F;
+    border-left: 1px solid #e2e2e2;
+    border-right: 1px solid #e2e2e2;
+}
+.sortChoice ul li:first-child.clicked{
+    border-bottom: 2px solid #4D685F;
+    border-right: 1px solid #e2e2e2;
+    border-left: none;
+}
+.sortChoice ul li.clicked span{
+    border-bottom: 2px solid #4D685F;
+    background: url("../images/sortChoice-clicked.png") no-repeat right center;
+}
+.sortChoice ul li span{
+    display: block;
+    float: left;
+    height: 27px;
+    line-height: 27px;
+    padding-right: 13px;
+    background: url("../images/sortChoice.png") no-repeat right center;
+}
+.sortChoice ul li:last-child span{
+    background: url("../images/sortChoice-frice.png") no-repeat right center;
+}
+.sortChoice ul li.priceasc span{
+    background: url("../images/price_arrange_up.png") no-repeat right center;
+}
+.sortChoice ul li.pricedesc span{
+    background: url("../images/price_arrange_down.png") no-repeat right center;
+}
+
+.pageNumSort{
+    margin: 0 auto;
+}
+
+.bookTitle{
+	width:100%;
+	overflow:hidden;
+}

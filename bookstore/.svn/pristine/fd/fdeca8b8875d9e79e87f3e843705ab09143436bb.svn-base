@@ -1,0 +1,5 @@
+package com.neusoft.bookstore.controller;
+
+public class BookcatController {
+
+}

@@ -1,0 +1,54 @@
+package com.neusoft.bookstore.service.xml;
+
+import java.util.List;
+
+import org.apache.ibatis.session.RowBounds;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
+
+import com.neusoft.bookstore.mapper.IBookMapper;
+import com.neusoft.bookstore.model.BookModel;
+import com.neusoft.bookstore.service.IBookService;
+@Service("BookService")
+@Transactional
+public class BookServiceImpl implements IBookService {
+
+	private IBookMapper ibm;
+	@Autowired
+	public void setIbm(IBookMapper ibm) {
+		this.ibm = ibm;
+	}
+
+	public void add(BookModel bcm) throws Exception {
+		// TODO Auto-generated method stub
+ibm.insert(bcm);
+	}
+
+	public void modify(BookModel bcm) throws Exception {
+		// TODO Auto-generated method stub
+ibm.update(bcm);
+	}
+
+	public void delete(BookModel bcm) throws Exception {
+		// TODO Auto-generated method stub
+ibm.delete(bcm);
+	}
+
+	public BookModel get(int bookid) throws Exception {
+		// TODO Auto-generated method stub
+		return ibm.select(bookid);
+	}
+
+	public List<BookModel> getListByAll() throws Exception {
+		// TODO Auto-generated method stub
+		return  ibm.selectListByAll() ;
+	}
+
+
+	public List<BookModel> selectListByWithPage(int rows, int page) throws Exception {
+		// TODO Auto-generated method stub
+	RowBounds  rb=new RowBounds((rows-1)*page,rows);
+		return ibm.selectListByWithPage(rb);
+	}
+}

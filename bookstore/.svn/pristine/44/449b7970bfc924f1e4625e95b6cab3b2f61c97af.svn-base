@@ -1,0 +1,195 @@
+<!--//<%@page contentType="text/html"%>-->
+<!--//<%@page pageEncoding="UTF-8"%>-->
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>后台管理-图书二级分类管理</title>
+<link rel="stylesheet" type="text/css" href="css/admin_common.css" />
+</head>
+<body>
+	<!--<%@ include file="common_header.jsp"%>-->
+	
+<div class="header">
+	<div class="header_inner">
+		<div class="hi_left">
+			<a href="main.jsp" class="hil_logo">LOGO</a>
+		</div>
+		<div class="hi_center">
+			<h1>后台管理系统</h1>
+		</div>
+		<div class="hi_right">
+			<span>当前用户：<b>
+			
+  
+    
+    <!--${cookie.a_name.value }-->  
+    
+			</b></span>　
+			<a href="#">退出登录</a>
+		</div>
+		<div class="clear"></div>
+	</div>
+</div>
+
+
+
+	<div class="main">
+		<div class="main_inner">
+			<div class="mi_left">
+				<!--<%@ include file="common_left.jsp"%>-->
+								
+<div class="left">
+	<div class="left_inner">
+		<ul  class="li_menu">
+			<li>
+				<h2>后台管理菜单</h2>
+			</li>
+			<li>
+				<a href="global.jsp">网站参数设置</a>
+			</li>
+			<li>
+				<a href="categoryfirst.jsp">一级分类设置</a>
+			</li>
+			<li>
+				<a href="categorysecond.jsp">二级分类设置</a>
+			</li>
+			<li>
+				<a href="goods.jsp">图书管理</a>
+			</li>
+			<li>
+				<a href="user.jsp">会员管理</a>
+			</li>
+			<li>
+				<a href="order.jsp">订单管理</a>
+			</li>
+		</ul>
+	</div>
+</div>
+				
+				
+				
+			</div>
+			<div class="mi_right">
+				<div class="mir_inner">
+					<h2 class="miri_h2">
+						图书一级分类管理<small>(每一个一级分类下面最多添加20个二级分类)</small>
+					</h2>
+					<div class="miri_form">
+						<form class="" action="categarysecondadd.do" method="post">
+							<table border="0" cellspacing="0" cellpadding="0" width="100%">
+								<tr>
+									<th>新增加图书二级分类&nbsp;&nbsp;</th>
+									<td width="350">
+									<select name="classfy_name22" class="selectvalue">
+									
+											<option value="default">--请选择--</option>
+											<option value="val1">值1</option>
+											<option value="val2">值2</option>
+											<option value="val3">值3</option>
+											
+									</select> 
+									<input type="text" name="keypoint_name" class="categraysecond" placeholder="请输入二级分类名称..." />
+									</td>
+									<td><input type="submit" value="确认添加" /></td>
+								</tr>
+							</table>
+						</form>
+						<table border="0" cellspacing="0" cellpadding="0" width="100%">
+						<thead>
+							<tr>
+								<th>No.</th>
+								<th>二级分类ID</th>
+								<th>一级分类名称</th>
+								<th>二级分类名称</th>
+								<th>Admin</th>
+								<th>AddTime</th>
+							</tr>
+							</thead>
+								<tbody class="tbodyre">	
+							<tr >
+								<td>1</td>
+								<td>0001</td>
+								<th>文学</th>
+								<td>诗歌</td>
+								<td>l本</td>
+								<td>2016-05-01 10:09:08</td>
+							</tr>
+							</tbody>
+						</table>
+					</div>
+				</div>
+			</div>
+			<div class="clear"></div>
+		</div>
+	</div>
+
+
+
+
+
+	<!--<%@ include file="common_footer.jsp"%>-->
+	<div class="footer">
+	<div class="footer_inner">
+		<p>
+			(c) Copyright 2016 new. All Rights Reserved. 
+		</p>
+	</div>
+</div>
+<script type="text/javascript" src="/admin/admin/js/jQuery.1.8.3.min.js"></script>
+<script type="text/javascript">
+	//alert(9);
+	$(document).ready(function() {
+
+		$.ajax({
+			type : "POST",
+			url : "ShowClassfy_second.do",
+			data: {"classfy_id": 1},
+			success : function(msg) {
+				var json_obj = eval("(" + msg + ")");
+				var _html = "";
+				//var _html2  ="";
+				for (var i = 0; i < json_obj.length; i++) {
+					//alert(json_obj[i].classfy_id);
+					_html += "<tr>";
+					_html += "<td>"+i+"</td>";
+					_html += "<td>"+json_obj[i].keypoint_id+"</td>";
+					_html += "<td>"+json_obj[i].classfy_name+"</td>";
+ 					_html += "<td>"+json_obj[i].keypoint_name+"</td>"; 
+ 					_html += "<td>"+ ${cookie.a_name.value}+"</td>";
+ 					_html += "<td>2016-05-01 10:09:08</td>";
+					_html += "</tr>";
+					//_html2 +="<option value="+json_obj[i].classfy_name+">"+json_obj[i].classfy_name+"</option>";
+				}
+				$(".tbodyre").html(_html);
+				//$(".selectvalue").html(_html2);
+				
+			}
+
+		});
+		
+		$.ajax({
+			type : "POST",
+			url : "showclassfy.do",
+			//data: {"classfy_id": 1},
+			success : function(msg) {
+				var json_obj = eval("(" + msg + ")");
+				var _html2  ="";
+				for (var i = 0; i < json_obj.length; i++) {
+					
+					_html2 +="<option  value="+json_obj[i].classfy_name+">"+json_obj[i].classfy_name+"</option>";
+
+				}
+				$(".selectvalue").html(_html2);
+
+			}
+
+		});
+		
+	});
+	
+
+	
+</script>
+</body>
+</html>

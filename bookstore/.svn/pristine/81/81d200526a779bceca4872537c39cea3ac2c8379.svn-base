@@ -1,0 +1,24 @@
+package com.neusoft.bookstore.mapper; 
+
+import java.util.List;
+
+import org.apache.ibatis.session.RowBounds;
+
+import com.neusoft.bookstore.model.BookcatModel;
+
+//图书分类信息
+public interface IBookcatMapper {
+	//添加图书分类
+	public void insert(BookcatModel bcm) throws Exception;
+	//删除图书分类
+	public void delete(BookcatModel bcm) throws Exception;
+	//修改图书分类
+	public void update(BookcatModel bcm) throws Exception;
+	//取得图书分类
+	public BookcatModel select(int catid) throws Exception;
+	//取得所有图书分类（无分页）
+	public List<BookcatModel> selectListByAll() throws Exception;
+	//取得所有图书分类（有分页）
+	public List<BookcatModel> selectListByWithPage(RowBounds rb) throws Exception;
+	
+}

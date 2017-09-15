@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+  <mapper namespace="com.neusoft.bookstore.mapper.IShopUserMapper">
+  	<resultMap id="ShopUserResultMap" type="ShopUser">
+  		<id column="userid" property="userid"/>
+  		<result column="username" property="username"/>
+  		<result column="password" property="password"/>
+  		<result column="realname" property="realname"/>
+  		<result column="tel" property="tel"/>
+  		<result column="address" property="address"/>
+  		<result column="email" property="email"/>
+  	</resultMap>
+  	<resultMap id="ShopUserCollectionResultMap" type="ShopUser" extends="ShopUserResultMap">
+  	<collection property="orders" column="userid" select="com.neusoft.bookstore.mapper.IOrdersMapper.selectOrderListByUserId"></collection>
+  	</resultMap>
+  	<!-- 添加用户 -->
+  	<insert id="insert" parameterType="ShopUser">
+  	<selectKey keyProperty="userid" resultType="int" order="BEFORE">
+  	 select SQ_shopuser.nextval from dual
+  	</selectKey>
+  	insert into shopuser(userid,username,password,realname,tel,address,email)
+  	values(#{userid},#{username},#{password},#{realname},#{tel},#{address},#{email})
+  	</insert>
+  	<!-- 删除用户 -->
+  	<delete id="delete" parameterType="ShopUser">
+  	delete from shopuser where userid=#{userid}
+  	</delete>
+  	<!-- 修改用户 -->
+  	<update id="update" parameterType="ShopUser">
+  		update shopuser set 
+  		username=#{username},password=#{password},realname=#{realname},tel=#{tel},address=#{address},email=#{email}
+  		where userid=#{userid}
+  	</update>
+  	<!--取得用户对象 -->
+  	<select id="select" parameterType="int" resultMap="ShopUserResultMap">
+  		select * from shopuser where userid=#{userid} order by userid
+  	</select>
+  	<!-- 取得所有用户列表（无分页） -->
+  	<select id="selectListByAll" resultMap="ShopUserResultMap">
+  	select * from shopuser order by userid
+  	</select>
+  	<!-- 取得所有用户列表（有分页） -->
+  	<select id="selectListByWithPage" resultMap="ShopUserResultMap">
+  	select * from shopuser
+  	</select>
+  	<!-- 取得用户总数 -->
+  	<select id="selectCountByAll" resultMap="ShopUserResultMap">
+  	select count(userid) from shopuser
+  	</select>	
+	<!-- 数量 -->
+	<select id="selectCountByAll" parameterType="int" resultType="int">
+		select count(*) from shopuser
+	</select>
+	<!-- 修改密码 -->
+	<select id="updateForPassword" parameterType="ShopUser">
+		update shopuser set password=#{password}
+		where userid=#{userid}
+	</select>
+  </mapper>

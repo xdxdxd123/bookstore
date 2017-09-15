@@ -1,0 +1,6 @@
+package com.neusoft.bookstore.service.impl;
+
+public class ShopUserServiceImpl {
+	//用户业务实现类
+	
+}

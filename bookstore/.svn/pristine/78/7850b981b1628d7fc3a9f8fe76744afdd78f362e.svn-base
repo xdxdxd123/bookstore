@@ -1,0 +1,96 @@
+<!--<%@page contentType="text/html"%>-->
+<!--<%@page pageEncoding="UTF-8"%>-->
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+        <title>后台管理-主页</title>
+        <link rel="stylesheet" type="text/css" href="css/admin_common.css"/>
+    </head>
+    <body>
+    	<!--<%@ include file="common_header.jsp" %>--> 
+    	
+    	 	<div class="header">
+	<div class="header_inner">
+		<div class="hi_left">
+			<a href="main.jsp" class="hil_logo">LOGO</a>
+		</div>
+		<div class="hi_center">
+			<h1>后台管理系统</h1>
+		</div>
+		<div class="hi_right">
+			<span>当前用户：<b>
+			
+  
+    
+    <!--${cookie.a_name.value }-->  
+    
+			</b></span>　
+			<a href="#">退出登录</a>
+		</div>
+		<div class="clear"></div>
+	</div>
+</div>
+    	
+    	
+    	<div class="main">
+    		<div class="main_inner">
+    			<div class="mi_left">
+    				<!--<%@ include file="common_left.jsp" %>--> 
+    				
+    <div class="left">
+	<div class="left_inner">
+		<ul  class="li_menu">
+			<li>
+				<h2>后台管理菜单</h2>
+			</li>
+			<li>
+				<a href="global.jsp">网站参数设置</a>
+			</li>
+			<li>
+				<a href="categoryfirst.jsp">一级分类设置</a>
+			</li>
+			<li>
+				<a href="categorysecond.jsp">二级分类设置</a>
+			</li>
+			<li>
+				<a href="goods.jsp">图书管理</a>
+			</li>
+			<li>
+				<a href="user.jsp">会员管理</a>
+			</li>
+			<li>
+				<a href="order.jsp">订单管理</a>
+			</li>
+		</ul>
+	</div>
+</div>
+    				
+    				
+    				
+    			</div>
+    			<div class="mi_right">
+    				<div class="mir_inner">
+    					<h2 class="miri_h2">全站信息一览</h2>
+    					全站信息一览
+    				</div>
+    			</div>
+    			<div class="clear"></div>
+    		</div>
+    	</div>
+    	
+    	
+    	
+    	
+    	
+    	<!--<%@ include file="common_footer.jsp" %>--> 
+    	<div class="footer">
+		<div class="footer_inner">
+			<p>
+				(c) Copyright 2016 new. All Rights Reserved. 
+			</p>
+		</div>
+	</div>
+    	
+ 	</body>
+</html>
