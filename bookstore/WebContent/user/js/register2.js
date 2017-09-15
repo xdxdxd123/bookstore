@@ -1,7 +1,7 @@
 // JavaScript Document
-$('document').ready(
+$("document").ready(
 function(){
-	$("RegForm").validate(
+	$("#RegForm").validate(
 			{
 			rules:{
 				  username:{
